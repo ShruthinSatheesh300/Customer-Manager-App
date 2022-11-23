@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CustomerApp.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="d-sm-inline-flex" style="margin-top:40px">
+    <div style="font-size: 2rem;margin-left:60px;margin-right:10px">
+        <i class="fas fa-user"></i>
+    </div>
+    
+    <h1>Customers</h1>
+</div>
+
+
+<p style="background-color:none">
+    <a  asp-action="Create">New Customer</a>
+</p>
+
+<div class="row">
+     
+   
+        @foreach (var item in Model)
+        {
+        <div class="col-sm-3">
+
+
+          
+         <div class="card" style="border-block-color:#0d6efd; width: 18rem;">
+        <div class="card-header" style="border-block-color:#0d6efd;background-color:#0d6efd">
+        <h4 class="card-title">@item.Name</h4>
+  </div>
+  <div class="card-body">
+      <div class="row">
+            <i  class="fas fa-user" style="font-size:7rem"></i>
+            <h6 class="card-title">@item.Email</h6>
+             <h6 class="card-title">@item.City</h6>
+             <h6 class="card-title">@item.State</h6>
+       </div>
+         <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pen-alt"></i></a> |
+         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+         <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a> |
+         <a  asp-controller="Orders" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">View Order</a>
+
+  </div>
+</div>
+        </div>
+        }
+</div>
